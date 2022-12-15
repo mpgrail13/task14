@@ -1,0 +1,20 @@
+version: "2.4"
+services:
+        apache:
+                build: /home/sergun/docker/apache/
+                image: apache:1
+                ports:
+                        - "8080:8080"
+                container_name: apache
+                networks:
+                        - task15
+        nginx:
+                build: /home/sergun/docker/nginx/
+                image: nginx:1
+                ports:
+                        - "80:80"
+                container_name: nginx
+                networks:
+                        - task15
+networks:
+        task15: {}
