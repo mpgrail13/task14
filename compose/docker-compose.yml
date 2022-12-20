@@ -1,7 +1,7 @@
 version: "2.4"
 services:
         apache:
-                build: /home/sergun/docker/apache/
+                build: ../apache/
                 image: apache:1
                 ports:
                         - "8080:8080"
@@ -9,7 +9,7 @@ services:
                 networks:
                         - task15
         nginx:
-                build: /home/sergun/docker/nginx/
+                build: ../nginx/
                 image: nginx:1
                 ports:
                         - "80:80"
