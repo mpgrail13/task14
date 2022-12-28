@@ -9,13 +9,17 @@ phases:
         pre_build:
                 commands:
                         - aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 096387456865.dkr.ecr.eu-central-1.amazonaws.com
+                        - ARN=$(aws ecs list-container-instances --cluster task20 --query containerInstanceArns[*] --output text)
+                        - echo $ARN
+                        - INSTANCE_ID=$(aws ecs describe-container-instances --cluster task20 --container-instances $ARN --query 'containerInstances[*].ec2InstanceId' --output text)
+                        - echo $INSTANCE_ID
+                        - INSTANCE_IP=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query 'Reservations[*].Instances[*].PublicIpAddress' --output text)
 
         build:
                 commands:
                         - pwd
                         - ls -la
-#                        - sed -i 's/127.0.0.1/18.192.22.77/g' nginx/nginx.conf
-                        - sed -i 's/127.0.0.1/18.192.22.77/g' nginx/html/index.html
+                        - sed -i 's/127.0.0.1/'$INSTANCE_IP'/g' nginx/html/index.html
                         - docker build -t 096387456865.dkr.ecr.eu-central-1.amazonaws.com/apache apache/
                         - docker build -t 096387456865.dkr.ecr.eu-central-1.amazonaws.com/nginx nginx/
 
