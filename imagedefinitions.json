@@ -1,0 +1,10 @@
+[
+	{
+		"name": "apache",
+		"imageUri": "096387456865.dkr.ecr.eu-central-1.amazonaws.com/apache:latest"
+	},
+	{
+		"name": "nginx",
+		"imageUri": "096387456865.dkr.ecr.eu-central-1.amazonaws.com/nginx:latest"
+	}
+]
