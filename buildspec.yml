@@ -12,6 +12,8 @@ phases:
 
         build:
                 commands:
+                        - pwd
+                        - ls -la
                         - docker build -t 096387456865.dkr.ecr.eu-central-1.amazonaws.com/apache apache/
                         - docker build -t 096387456865.dkr.ecr.eu-central-1.amazonaws.com/nginx nginx/
 
