@@ -14,7 +14,7 @@ phases:
                 commands:
                         - pwd
                         - ls -la
-                        - sed -i 's/127.0.0.1/18.192.22.77/g' /nginx/nginx.conf
+                        - sed -i 's/127.0.0.1/18.192.22.77/g' nginx/nginx.conf
                         - docker build -t 096387456865.dkr.ecr.eu-central-1.amazonaws.com/apache apache/
                         - docker build -t 096387456865.dkr.ecr.eu-central-1.amazonaws.com/nginx nginx/
 
