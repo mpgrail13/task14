@@ -32,7 +32,7 @@ phases:
                         - TASK_REVISION=$(aws ecs describe-task-definition --task-definition task20 --region eu-central-1 | grep "revision" | tr "/" " " | awk '{print $2}' | sed 's/,//')
                         - aws ecs update-service --cluster task20 --service task20-service --task-definition task20:${TASK_REVISION} --desired-count 1 --region eu-central-1 --force-new-deployment
                         - aws ecs stop-task --cluster task20 --task ${TASK_ID}
-                        - aws cloudfront create-invalidation --distribution-id E2MXLXBYZDSB9L --paths "/nginx/html/index.html"
+                        - aws cloudfront create-invalidation --distribution-id EMYF4AEJ8VO1R --paths "/nginx/html/index.html"
 
 artifacts:
         files:
